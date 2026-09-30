@@ -1,0 +1,19 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node / Build artifacts (for future fullstack expansion)
+node_modules/
+dist/
+build/
+.next/
+.env
+.env.local
+.env.production
