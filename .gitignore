@@ -12,6 +12,8 @@ desktop.ini
 # Node / Build artifacts (for future fullstack expansion)
 node_modules/
 dist/
+test-results/
+playwright-report/
 build/
 .next/
 .env
