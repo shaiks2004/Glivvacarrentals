@@ -1,18 +1,26 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { SITE } from '../data/site';
+import { useAuth } from '../lib/auth';
 
 const LINKS = [['/', 'Home'], ['/cars', 'Our Fleet'], ['/offers', 'Offers'], ['/blog', 'Blog']] as const;
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { user, role } = useAuth();
+
   useEffect(() => {
     const on = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', on, { passive: true });
     return () => window.removeEventListener('scroll', on);
   }, []);
+
   const close = () => setOpen(false);
+
+  const authDestination = role === 'admin' ? '/admin' : role === 'employee' ? '/staff' : '/account';
+  const authLabel = user ? (role === 'admin' ? 'Admin' : role === 'employee' ? 'Staff' : 'Account') : 'Log In';
+
   return (
     <header className={'hd' + (scrolled ? ' s' : '')}>
       <div className="wrap hd-in">
@@ -23,11 +31,11 @@ export default function Header() {
           {LINKS.map(([to, label]) => (
             <NavLink key={to} to={to} end={to === '/'} className={({ isActive }) => (isActive ? 'on' : '')} onClick={close}>{label}</NavLink>
           ))}
-          <Link className="m-only" to="/login" onClick={close}>Log In</Link>
+          <Link className="m-only" to={user ? authDestination : '/login'} onClick={close}>{authLabel}</Link>
           <Link className="m-only" to="/cars" onClick={close}>Book Now</Link>
         </nav>
         <a className="tel" href={'tel:' + SITE.phone.replace(/\s/g, '')}>{SITE.phone}</a>
-        <Link className="btn sm" to="/login">Log In</Link>
+        <Link className="btn sm" to={user ? authDestination : '/login'}>{authLabel}</Link>
         <Link className="btn gold sm" to="/cars">Book Now</Link>
         <button className="burger" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(o => !o)}>&#9776;</button>
       </div>
