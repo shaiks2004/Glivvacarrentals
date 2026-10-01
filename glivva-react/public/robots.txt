@@ -1,0 +1,10 @@
+# Glivva Car Rentals robots.txt
+User-agent: *
+Allow: /
+Disallow: /account/
+Disallow: /staff/
+Disallow: /admin/
+Disallow: /change-password
+Disallow: /reset-password
+
+Sitemap: https://glivvacarrentals.com/sitemap.xml

@@ -4,7 +4,21 @@ import { FAQS } from '../data/site';
 import { useMeta } from '../lib/useMeta';
 
 export default function Faq() {
-  useMeta('FAQ | Glivva Car Rentals', 'Answers to common car rental questions.');
+  useMeta('FAQ | Glivva Car Rentals', 'Answers to common car rental questions.', {
+    type: 'website',
+    jsonLd: {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: FAQS.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
+    },
+  });
   return (
     <>
       <PageHead title="Frequently asked questions" lead="Quick answers to the things people ask most." />

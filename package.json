@@ -1,5 +1,10 @@
 {
   "devDependencies": {
+    "@types/pg": "^8.23.1",
+    "pg": "^8.23.1",
     "supabase": "^2.119.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.2"
   }
 }

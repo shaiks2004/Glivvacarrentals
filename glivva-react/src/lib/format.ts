@@ -22,3 +22,30 @@ export const addDays = (days: number, date: Date = new Date(), timeZone = IST): 
 
 export const todayIST = (): string => formatDate();
 export const tomorrowIST = (): string => addDays(1);
+
+export const formatDatePrettyIST = (dateStr?: string | null): string => {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return String(dateStr);
+  return new Intl.DateTimeFormat('en-IN', {
+    timeZone: IST,
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(date);
+};
+
+export const formatDateTimeIST = (dateStr?: string | null): string => {
+  if (!dateStr) return '';
+  const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return String(dateStr);
+  return new Intl.DateTimeFormat('en-IN', {
+    timeZone: IST,
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+  }).format(date);
+};

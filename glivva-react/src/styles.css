@@ -176,3 +176,5 @@ footer .brand img{height:64px;margin-bottom:1rem}.legalbar{display:flex;justify-
 .post{display:block}.post .meta{font-size:.78rem;color:var(--mute)}.prose{max-width:720px}.prose p{color:var(--mute);margin:1rem 0;font-size:1.05rem}
 a.card:hover h3{color:var(--gold)}
 @media(max-width:900px){.find[style]{grid-template-columns:1fr 1fr!important}}
+
+

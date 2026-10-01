@@ -16,6 +16,11 @@ test-results/
 playwright-report/
 build/
 .next/
+scripts/
+.temp/
+supabase/.temp/
 .env
-.env.local
-.env.production
+.env.*
+!.env.example
+
+

@@ -87,9 +87,9 @@ select set_config('request.jwt.claims', '{}', true);
 select set_config('request.jwt.claim.sub', '', true);
 select throws_ok(
   $$select public.create_booking('GLV-ERR4', 1, 'Ranchi', tstzrange('2026-10-20 10:00+05:30', '2026-10-22 10:00+05:30', '[)'), 'self', '[]'::jsonb)$$,
-  '42501',
+  '22023',
   null,
-  'RPC rejects unauthenticated caller'
+  'RPC rejects unauthenticated caller without guest contact details'
 );
 
 select * from finish();
